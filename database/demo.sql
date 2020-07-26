@@ -83,7 +83,7 @@ CREATE TABLE `students` (
   `Prize` text DEFAULT NULL,
   `NumberCMT` varchar(100) DEFAULT NULL,
   `CompanyID` int(11) NOT NULL,
-  `TeacherID` int(11) NOT NULL
+  `TeacherID` int(11) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

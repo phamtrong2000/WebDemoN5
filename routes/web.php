@@ -19,9 +19,9 @@ Route::get('test',function(){
     return view('Pages.layout.index');
 });
 
-Route::group(['prefix' => 'Pages'], function(){
+Route::group(['prefix' => 'Pages','middleware'=>'auth'], function(){
     Route::group(['prefix'=>'Student'], function(){
-        Route::get('Home', 'StudentController@getHome');
+        Route::get('Home', 'StudentController@getHome')->name('student-home');
         Route::get('Blog', 'StudentController@getBlog');
         Route::get('DS1', 'StudentController@getDS1');
         Route::get('DS2', 'StudentController@getDS2');
@@ -30,7 +30,7 @@ Route::group(['prefix' => 'Pages'], function(){
         Route::get('Setting', 'StudentController@getSetting');
     });
     Route::group(['prefix'=>'Teacher'], function(){
-        Route::get('Home', 'TeacherController@getHome');
+        Route::get('Home', 'TeacherController@getHome')->name('teacher-home');
         Route::get('Blog', 'TeacherController@getBlog');
         Route::get('DS1', 'TeacherController@getDS1');
         Route::get('DS2', 'TeacherController@getDS2');
@@ -39,7 +39,7 @@ Route::group(['prefix' => 'Pages'], function(){
         Route::get('Setting', 'TeacherController@getSetting');
     });
     Route::group(['prefix'=>'Company'], function(){
-        Route::get('Home', 'CompanyController@getHome');
+        Route::get('Home', 'CompanyController@getHome')->name('company-home');
         Route::get('Blog', 'CompanyController@getBlog');
         Route::get('DS1', 'CompanyController@getDS1');
         Route::get('DS2', 'CompanyController@getDS2');
@@ -48,3 +48,8 @@ Route::group(['prefix' => 'Pages'], function(){
         Route::get('Setting', 'CompanyController@getSetting');
     });
 });
+Route::get('login', 'UserController@Login')->name('login');
+Route::post('login', 'UserController@post_Login');
+
+Route::get('registration', 'UserController@registration')->name('registration');
+Route::post('registration', 'UserController@post_registration');
